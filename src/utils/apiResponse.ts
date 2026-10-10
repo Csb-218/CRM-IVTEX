@@ -27,3 +27,6 @@ export const sendResponse = <T>({
     ...(pagination && { pagination })
   });
 };
+
+export const getParamId = (paramVal: string | string[]): string =>
+  Array.isArray(paramVal) ? paramVal[0] : paramVal;

@@ -1,5 +1,8 @@
 import { Types } from 'mongoose';
 import { User, IUser, UserRole } from '../models/user.model';
+import { Lead } from '../models/lead.model';
+import { Customer } from '../models/customer.model';
+import { Deal } from '../models/deal.model';
 import { AppError } from '../utils/appError';
 
 export interface CreateUserInput {
@@ -258,10 +261,24 @@ export class UserService {
       );
     }
 
-    // Check 2: Extension point for future CRM owned records (Leads, Deals, Contacts, Tasks)
-    // When Lead or Deal models are introduced, check:
-    // const ownedLeadsCount = await Lead.countDocuments({ ownerId: id });
-    // if (ownedLeadsCount > 0) throw new AppError(...);
+    // Check 2: Block deletion if user owns or is assigned to Leads, Customers, or Deals
+    const [assignedLeadsCount, ownedCustomersCount, ownedDealsCount] = await Promise.all([
+      Lead.countDocuments({ assignedTo: id }),
+      Customer.countDocuments({ assignedTo: id }),
+      Deal.countDocuments({ assignedTo: id })
+    ]);
+
+    const ownedRecords: string[] = [];
+    if (assignedLeadsCount > 0) ownedRecords.push(`${assignedLeadsCount} lead(s)`);
+    if (ownedCustomersCount > 0) ownedRecords.push(`${ownedCustomersCount} customer(s)`);
+    if (ownedDealsCount > 0) ownedRecords.push(`${ownedDealsCount} deal(s)`);
+
+    if (ownedRecords.length > 0) {
+      throw new AppError(
+        `Cannot delete user: user is assigned to ${ownedRecords.join(', ')}. Please reassign these records before deleting.`,
+        400
+      );
+    }
 
     await User.findByIdAndDelete(id);
   }
