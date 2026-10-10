@@ -14,6 +14,7 @@ import {
   IUser,
   Activity,
   ActivityType,
+  ActivityStatus,
   EntityType,
   Timeline,
   TimelineAction
@@ -527,8 +528,11 @@ export class LeadService {
       entityId: lead._id,
       type: ActivityType.NOTE,
       title: title.trim(),
+      description: content.trim(),
       content: content.trim(),
-      createdBy: user._id
+      createdBy: user._id,
+      status: ActivityStatus.COMPLETED,
+      completedAt: new Date()
     });
 
     await logTimeline({

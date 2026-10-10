@@ -4,6 +4,8 @@ import userRoutes from './user.routes';
 import leadRoutes from './lead.routes';
 import customerRoutes from './customer.routes';
 import dealRoutes from './deal.routes';
+import activityRoutes from './activity.routes';
+import timelineRoutes from './timeline.routes';
 
 const router = Router();
 
@@ -12,5 +14,7 @@ router.use('/users', userRoutes);
 router.use('/leads', leadRoutes);
 router.use('/customers', customerRoutes);
 router.use('/deals', dealRoutes);
+router.use('/activities', activityRoutes);
+router.use('/timeline', timelineRoutes);
 
 export default router;

@@ -1,5 +1,5 @@
 import { Types } from 'mongoose';
-import { Timeline, TimelineAction, EntityType } from '../models';
+import { TimelineLog, TimelineAction, EntityType } from '../models';
 
 export interface LogTimelineOptions {
   entityType: EntityType;
@@ -8,19 +8,22 @@ export interface LogTimelineOptions {
   performedBy: Types.ObjectId | string;
   previousValue?: any;
   newValue?: any;
-  description: string;
+  message?: string;
+  description?: string;
 }
 
 export const logTimeline = async (options: LogTimelineOptions) => {
   try {
-    return await Timeline.create({
+    const text = options.message || options.description || '';
+    return await TimelineLog.create({
       entityType: options.entityType,
       entityId: new Types.ObjectId(options.entityId.toString()),
       action: options.action,
       performedBy: new Types.ObjectId(options.performedBy.toString()),
       previousValue: options.previousValue,
       newValue: options.newValue,
-      description: options.description
+      message: text,
+      description: text
     });
   } catch (error) {
     console.error('Failed to log timeline audit entry:', error);
