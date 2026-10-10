@@ -5,3 +5,4 @@ export * from './customer.validator';
 export * from './deal.validator';
 export * from './activity.validator';
 export * from './timeline.validator';
+export * from './dashboard.validator';

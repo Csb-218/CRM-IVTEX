@@ -6,6 +6,7 @@ import customerRoutes from './customer.routes';
 import dealRoutes from './deal.routes';
 import activityRoutes from './activity.routes';
 import timelineRoutes from './timeline.routes';
+import dashboardRoutes from './dashboard.routes';
 
 const router = Router();
 
@@ -16,5 +17,6 @@ router.use('/customers', customerRoutes);
 router.use('/deals', dealRoutes);
 router.use('/activities', activityRoutes);
 router.use('/timeline', timelineRoutes);
+router.use('/dashboard', dashboardRoutes);
 
 export default router;
