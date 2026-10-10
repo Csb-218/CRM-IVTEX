@@ -1,0 +1,65 @@
+$kind: http-example
+request:
+  url: "{{BASE_URL}}/api/auth/login"
+  method: POST
+  body:
+    type: json
+    content: |-
+      {
+        "email": "Sameer@example.com",
+        "password": "Str0ng@Pass123"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    - key: x-powered-by
+      value: Express
+    - key: vary
+      value: Origin
+    - key: access-control-allow-credentials
+      value: "true"
+    - key: set-cookie
+      value: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYzhlMDMxNTlmYTRlOTFmZTk0MWFkMyIsInJvbGUiOiJtYW5hZ2VyIiwiZW1haWwiOiJzYW1lZXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3OTE1NDk3ODksImV4cCI6MTc5MTU1MDY4OX0.zDQY-mXKR1IGV7WLL1BEwLA3fV3-FSmUKWi7ROo04VQ; Max-Age=900; Path=/; Expires=Fri, 09 Oct 2026 12:58:09 GMT; HttpOnly; SameSite=Lax
+    - key: set-cookie
+      value: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYzhlMDMxNTlmYTRlOTFmZTk0MWFkMyIsImlhdCI6MTc5MTU0OTc4OSwiZXhwIjoxNzkyMTU0NTg5fQ.d9vO8VXlpu6t0ebaNQGV2GoGY4EjnhzDbsH4zfcEVMQ; Max-Age=604800; Path=/; Expires=Fri, 16 Oct 2026 12:43:09 GMT; HttpOnly; SameSite=Lax
+    - key: content-type
+      value: application/json; charset=utf-8
+    - key: content-length
+      value: "836"
+    - key: etag
+      value: W/"344-/xIJUkm7c+TgaRgf9O+az/xVeiM"
+    - key: date
+      value: Fri, 09 Oct 2026 12:43:09 GMT
+    - key: connection
+      value: keep-alive
+    - key: keep-alive
+      value: timeout=5
+  body:
+    type: json
+    content: |-
+      {
+        "success": true,
+        "message": "Logged in successfully",
+        "data": {
+          "user": {
+            "_id": "6ac8e03159fa4e91fe941ad3",
+            "name": "Sameer Sharma",
+            "email": "sameer@example.com",
+            "phone": "+919876543210",
+            "role": "manager",
+            "managerId": {
+              "_id": "6ac8d83ff99ddbc0d0ca645c",
+              "name": "Super Admin",
+              "email": "admin@ivtex.com",
+              "role": "admin"
+            },
+            "isActive": true,
+            "createdAt": "2026-10-09T12:38:09.507Z",
+            "updatedAt": "2026-10-09T12:43:09.223Z"
+          },
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYzhlMDMxNTlmYTRlOTFmZTk0MWFkMyIsInJvbGUiOiJtYW5hZ2VyIiwiZW1haWwiOiJzYW1lZXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3OTE1NDk3ODksImV4cCI6MTc5MTU1MDY4OX0.zDQY-mXKR1IGV7WLL1BEwLA3fV3-FSmUKWi7ROo04VQ",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYzhlMDMxNTlmYTRlOTFmZTk0MWFkMyIsImlhdCI6MTc5MTU0OTc4OSwiZXhwIjoxNzkyMTU0NTg5fQ.d9vO8VXlpu6t0ebaNQGV2GoGY4EjnhzDbsH4zfcEVMQ"
+        }
+      }
+order: 1000

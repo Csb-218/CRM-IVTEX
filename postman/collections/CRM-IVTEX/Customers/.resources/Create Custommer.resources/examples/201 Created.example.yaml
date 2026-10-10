@@ -1,0 +1,67 @@
+$kind: http-example
+request:
+  url: "{{BASE_URL}}/api/customers"
+  method: POST
+  body:
+    type: json
+    content: |
+      {
+        "name": "Murati",
+        "email": "contact@acmeinnovations.com",
+        "phone": "+1-555-0199",
+        "company": "Acme Innovations",
+        "address": {
+          "street": "123 Technology Park",
+          "city": "Austin",
+          "state": "TX",
+          "postalCode": "78701",
+          "country": "USA"
+        },
+        "assignedTo": "6ac8e03159fa4e91fe941ad3",
+        "status": "active"
+      }
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    x-powered-by: Express
+    vary: Origin
+    access-control-allow-credentials: "true"
+    content-type: application/json; charset=utf-8
+    content-length: "541"
+    etag: W/"21d-RT22p2gn6W+QQNrjAYTp3M96WHs"
+    date: Sat, 10 Oct 2026 13:13:55 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: json
+    content: |-
+      {
+        "success": true,
+        "message": "Customer created successfully",
+        "data": {
+          "address": {
+            "street": "123 Technology Park",
+            "city": "Austin",
+            "state": "TX",
+            "postalCode": "78701",
+            "country": "USA"
+          },
+          "_id": "6aca3a12bfde21de471440b6",
+          "name": "Murati",
+          "email": "contact@acmeinnovations.com",
+          "phone": "+1-555-0199",
+          "company": "Acme Innovations",
+          "leadId": null,
+          "assignedTo": {
+            "_id": "6ac8e03159fa4e91fe941ad3",
+            "name": "Sameer Sharma",
+            "email": "sameer@example.com",
+            "role": "manager"
+          },
+          "status": "active",
+          "createdAt": "2026-10-10T13:13:54.793Z",
+          "updatedAt": "2026-10-10T13:13:54.793Z"
+        }
+      }
+order: 1000

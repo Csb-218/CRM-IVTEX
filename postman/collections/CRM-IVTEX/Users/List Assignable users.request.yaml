@@ -1,0 +1,20 @@
+$kind: http-request
+description: 'Returns a list of executives who can be assigned leads and deals. Filtered by the current user role — managers see their own executives.'
+url: '{{BASE_URL}}/api/users/assignable'
+method: GET
+auth:
+  type: bearer
+  credentials:
+    token: '{{token}}'
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const res = pm.response.json();
+      pm.test("Status code is 200", () => pm.response.to.have.status(200));
+      pm.test("Response time < 2000ms", () => pm.expect(pm.response.responseTime).to.be.below(2000));
+      pm.test("Response has success true", () => pm.expect(res.success).to.be.true);
+      pm.test("Data is an array", () => pm.expect(res.data).to.be.an("array"));
+      pm.test("Pagination is present", () => pm.expect(res.pagination).to.be.an("object"));
+examples: '.resources/List Assignable users.resources/examples'
+order: 2000

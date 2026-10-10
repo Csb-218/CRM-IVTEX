@@ -1,0 +1,41 @@
+$kind: http-request
+description: 'Updates an existing customer record by ID. Supports partial updates to name, email, phone, company, address, assignedTo, and status.'
+url: '{{BASE_URL}}/api/customers/:id'
+method: PUT
+pathVariables:
+  - key: id
+    value: 6aca3a12bfde21de471440b6
+    description: ''
+body:
+  type: json
+  content: |-
+    {
+      "name": "Acme Innovations Global LLC",
+      "email": "operations@acmeinnovations.com",
+      "phone": "+1-555-0288",
+      "company": "Acme Global",
+      "address": {
+        "street": "456 Enterprise Boulevard",
+        "city": "Dallas",
+        "state": "TX",
+        "postalCode": "75001",
+        "country": "USA"
+      },
+      "assignedTo": "6ac8e03159fa4e91fe941ad3",
+      "status": "inactive"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: '{{token}}'
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const res = pm.response.json();
+      pm.test("Status code is 200", () => pm.response.to.have.status(200));
+      pm.test("Response time < 2000ms", () => pm.expect(pm.response.responseTime).to.be.below(2000));
+      pm.test("Response has success true", () => pm.expect(res.success).to.be.true);
+      pm.test("Updated data is returned", () => pm.expect(res.data).to.exist);
+examples: '.resources/Update Customer.resources/examples'
+order: 3000

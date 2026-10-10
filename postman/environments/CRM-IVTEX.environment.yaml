@@ -1,0 +1,6 @@
+name: CRM-IVTEX
+values:
+  - key: BASE_URL
+    value: ''
+  - key: token
+    value: ''

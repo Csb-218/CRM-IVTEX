@@ -1,0 +1,4 @@
+$kind: collection
+name: Lead
+description: 'Full lead lifecycle management — create, assign, update status, add notes, and convert qualified leads into customers and deals.'
+order: 5000

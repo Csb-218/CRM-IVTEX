@@ -1,0 +1,37 @@
+$kind: http-request
+description: 'Converts a qualified lead into a customer and deal. Only leads with status "qualified" can be converted. Creates linked customer and deal records.'
+url: '{{BASE_URL}}/api/leads/:id/convert'
+method: POST
+pathVariables:
+  - key: id
+    value: 6aca29385191814d42c2ebe0
+body:
+  type: json
+  content: |-
+    {
+      "dealName": "Acme Corp Q4 Deal",
+      "dealValue": 50000,
+      "dealProbability": 40,
+      "dealExpectedCloseDate": "2026-12-31",
+      "customerAddress": {
+        "street": "123 Business Way",
+        "city": "Metropolis",
+        "state": "NY",
+        "country": "USA"
+      }
+    }
+auth:
+  type: bearer
+  credentials:
+    token: '{{token}}'
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const res = pm.response.json();
+      pm.test("Status code is 200 or 201", () => pm.expect(pm.response.code).to.be.oneOf([200, 201]));
+      pm.test("Response time < 2000ms", () => pm.expect(pm.response.responseTime).to.be.below(2000));
+      pm.test("Response has success true", () => pm.expect(res.success).to.be.true);
+      pm.test("Created data is returned", () => pm.expect(res.data).to.exist);
+examples: '.resources/Convert Lead.resources/examples'
+order: 6000

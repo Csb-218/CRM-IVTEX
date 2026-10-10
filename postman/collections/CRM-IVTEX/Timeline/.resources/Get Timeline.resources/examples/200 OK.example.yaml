@@ -1,0 +1,285 @@
+$kind: http-example
+request:
+  url: "{{BASE_URL}}/api/timeline"
+  method: GET
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    x-powered-by: Express
+    vary: Origin
+    access-control-allow-credentials: "true"
+    content-type: application/json; charset=utf-8
+    content-length: "6778"
+    etag: W/"1a7a-xvd3NDxcEgv/okdQER3K0/7Dqbw"
+    date: Sat, 10 Oct 2026 16:55:55 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: json
+    content: |-
+      {
+        "success": true,
+        "message": "Timeline logs retrieved successfully",
+        "data": [
+          {
+            "_id": "6aca4214bfde21de471440bd",
+            "entityType": "deal",
+            "entityId": "6aca3e9dbfde21de471440b9",
+            "action": "assigned",
+            "performedBy": {
+              "_id": "6ac8d83ff99ddbc0d0ca645c",
+              "name": "Super Admin",
+              "email": "admin@ivtex.com",
+              "role": "admin"
+            },
+            "previousValue": "6aca2c365191814d42c2ebe3",
+            "newValue": "6aca2c365191814d42c2ebe3",
+            "description": "Deal reassigned to Bakul Sharma (executive) by Super Admin",
+            "createdAt": "2026-10-10T13:48:04.946Z",
+            "updatedAt": "2026-10-10T13:48:04.946Z",
+            "message": "Deal reassigned to Bakul Sharma (executive) by Super Admin"
+          },
+          {
+            "_id": "6aca415cbfde21de471440bc",
+            "entityType": "deal",
+            "entityId": "6aca3e9dbfde21de471440b9",
+            "action": "stage_changed",
+            "performedBy": {
+              "_id": "6ac8d83ff99ddbc0d0ca645c",
+              "name": "Super Admin",
+              "email": "admin@ivtex.com",
+              "role": "admin"
+            },
+            "previousValue": "proposal",
+            "newValue": "won",
+            "description": "Deal stage moved from 'proposal' to 'won' by Super Admin",
+            "createdAt": "2026-10-10T13:45:00.517Z",
+            "updatedAt": "2026-10-10T13:45:00.517Z",
+            "message": "Deal stage moved from 'proposal' to 'won' by Super Admin"
+          },
+          {
+            "_id": "6aca3f9abfde21de471440bb",
+            "entityType": "deal",
+            "entityId": "6aca3e9dbfde21de471440b9",
+            "action": "stage_changed",
+            "performedBy": {
+              "_id": "6ac8d83ff99ddbc0d0ca645c",
+              "name": "Super Admin",
+              "email": "admin@ivtex.com",
+              "role": "admin"
+            },
+            "previousValue": "discovery",
+            "newValue": "proposal",
+            "description": "Deal stage moved from 'discovery' to 'proposal' by Super Admin",
+            "createdAt": "2026-10-10T13:37:30.939Z",
+            "updatedAt": "2026-10-10T13:37:30.939Z",
+            "message": "Deal stage moved from 'discovery' to 'proposal' by Super Admin"
+          },
+          {
+            "_id": "6aca3e9dbfde21de471440ba",
+            "entityType": "deal",
+            "entityId": "6aca3e9dbfde21de471440b9",
+            "action": "created",
+            "performedBy": {
+              "_id": "6ac8d83ff99ddbc0d0ca645c",
+              "name": "Super Admin",
+              "email": "admin@ivtex.com",
+              "role": "admin"
+            },
+            "previousValue": null,
+            "newValue": {
+              "value": 75000,
+              "stage": "discovery",
+              "assignedTo": "6aca2c365191814d42c2ebe3"
+            },
+            "description": "Deal 'Enterprise ERP Migration' created by Super Admin",
+            "createdAt": "2026-10-10T13:33:17.628Z",
+            "updatedAt": "2026-10-10T13:33:17.628Z",
+            "message": "Deal 'Enterprise ERP Migration' created by Super Admin"
+          },
+          {
+            "_id": "6aca32e4bfde21de471440b5",
+            "entityType": "lead",
+            "entityId": "6aca3176bfde21de471440b1",
+            "action": "note_added",
+            "performedBy": {
+              "_id": "6ac8d83ff99ddbc0d0ca645c",
+              "name": "Super Admin",
+              "email": "admin@ivtex.com",
+              "role": "admin"
+            },
+            "previousValue": null,
+            "newValue": null,
+            "description": "Note added by Super Admin",
+            "createdAt": "2026-10-10T12:43:16.952Z",
+            "updatedAt": "2026-10-10T12:43:16.952Z",
+            "message": "Note added by Super Admin"
+          },
+          {
+            "_id": "6aca31fbbfde21de471440b3",
+            "entityType": "lead",
+            "entityId": "6aca3176bfde21de471440b1",
+            "action": "status_changed",
+            "performedBy": {
+              "_id": "6ac8d83ff99ddbc0d0ca645c",
+              "name": "Super Admin",
+              "email": "admin@ivtex.com",
+              "role": "admin"
+            },
+            "previousValue": "new",
+            "newValue": "qualified",
+            "description": "Lead status changed from 'new' to 'qualified' by Super Admin",
+            "createdAt": "2026-10-10T12:39:23.825Z",
+            "updatedAt": "2026-10-10T12:39:23.825Z",
+            "message": "Lead status changed from 'new' to 'qualified' by Super Admin"
+          },
+          {
+            "_id": "6aca3176bfde21de471440b2",
+            "entityType": "lead",
+            "entityId": "6aca3176bfde21de471440b1",
+            "action": "created",
+            "performedBy": {
+              "_id": "6ac8d83ff99ddbc0d0ca645c",
+              "name": "Super Admin",
+              "email": "admin@ivtex.com",
+              "role": "admin"
+            },
+            "previousValue": null,
+            "newValue": {
+              "status": "new",
+              "assignedTo": "6ac8e0cd59fa4e91fe941ad4"
+            },
+            "description": "Lead created by Super Admin",
+            "createdAt": "2026-10-10T12:37:10.206Z",
+            "updatedAt": "2026-10-10T12:37:10.206Z",
+            "message": "Lead created by Super Admin"
+          },
+          {
+            "_id": "6aca30bbbfde21de471440ae",
+            "entityType": "lead",
+            "entityId": "6aca29385191814d42c2ebe0",
+            "action": "converted",
+            "performedBy": {
+              "_id": "6ac8d83ff99ddbc0d0ca645c",
+              "name": "Super Admin",
+              "email": "admin@ivtex.com",
+              "role": "admin"
+            },
+            "previousValue": null,
+            "newValue": {
+              "customerId": "6aca30bbbfde21de471440ac",
+              "dealId": "6aca30bbbfde21de471440ad"
+            },
+            "description": "Lead converted to customer 'Priya Verma' and deal 'Acme Corp Q4 Deal' by Super Admin",
+            "createdAt": "2026-10-10T12:34:03.969Z",
+            "updatedAt": "2026-10-10T12:34:03.969Z",
+            "message": "Lead converted to customer 'Priya Verma' and deal 'Acme Corp Q4 Deal' by Super Admin"
+          },
+          {
+            "_id": "6aca30bbbfde21de471440af",
+            "entityType": "customer",
+            "entityId": "6aca30bbbfde21de471440ac",
+            "action": "created",
+            "performedBy": {
+              "_id": "6ac8d83ff99ddbc0d0ca645c",
+              "name": "Super Admin",
+              "email": "admin@ivtex.com",
+              "role": "admin"
+            },
+            "previousValue": null,
+            "newValue": {
+              "leadId": "6aca29385191814d42c2ebe0"
+            },
+            "description": "Customer created via lead conversion of 'Priya Verma'",
+            "createdAt": "2026-10-10T12:34:03.969Z",
+            "updatedAt": "2026-10-10T12:34:03.969Z",
+            "message": "Customer created via lead conversion of 'Priya Verma'"
+          },
+          {
+            "_id": "6aca30bbbfde21de471440b0",
+            "entityType": "deal",
+            "entityId": "6aca30bbbfde21de471440ad",
+            "action": "created",
+            "performedBy": {
+              "_id": "6ac8d83ff99ddbc0d0ca645c",
+              "name": "Super Admin",
+              "email": "admin@ivtex.com",
+              "role": "admin"
+            },
+            "previousValue": null,
+            "newValue": {
+              "customerId": "6aca30bbbfde21de471440ac",
+              "leadId": "6aca29385191814d42c2ebe0"
+            },
+            "description": "Deal created via lead conversion with value $50000",
+            "createdAt": "2026-10-10T12:34:03.969Z",
+            "updatedAt": "2026-10-10T12:34:03.969Z",
+            "message": "Deal created via lead conversion with value $50000"
+          },
+          {
+            "_id": "6aca2c6d5191814d42c2ebe4",
+            "entityType": "lead",
+            "entityId": "6aca29385191814d42c2ebe0",
+            "action": "assigned",
+            "performedBy": {
+              "_id": "6ac8d83ff99ddbc0d0ca645c",
+              "name": "Super Admin",
+              "email": "admin@ivtex.com",
+              "role": "admin"
+            },
+            "previousValue": "6ac8e0cd59fa4e91fe941ad4",
+            "newValue": "6aca2c365191814d42c2ebe3",
+            "description": "Lead assigned to Bakul Sharma (executive) by Super Admin",
+            "createdAt": "2026-10-10T12:15:41.562Z",
+            "updatedAt": "2026-10-10T12:15:41.562Z",
+            "message": "Lead assigned to Bakul Sharma (executive) by Super Admin"
+          },
+          {
+            "_id": "6aca2b145191814d42c2ebe2",
+            "entityType": "lead",
+            "entityId": "6aca29385191814d42c2ebe0",
+            "action": "status_changed",
+            "performedBy": {
+              "_id": "6ac8d83ff99ddbc0d0ca645c",
+              "name": "Super Admin",
+              "email": "admin@ivtex.com",
+              "role": "admin"
+            },
+            "previousValue": "new",
+            "newValue": "qualified",
+            "description": "Lead status changed from 'new' to 'qualified' by Super Admin",
+            "createdAt": "2026-10-10T12:09:56.328Z",
+            "updatedAt": "2026-10-10T12:09:56.328Z",
+            "message": "Lead status changed from 'new' to 'qualified' by Super Admin"
+          },
+          {
+            "_id": "6aca29385191814d42c2ebe1",
+            "entityType": "lead",
+            "entityId": "6aca29385191814d42c2ebe0",
+            "action": "created",
+            "performedBy": {
+              "_id": "6ac8d83ff99ddbc0d0ca645c",
+              "name": "Super Admin",
+              "email": "admin@ivtex.com",
+              "role": "admin"
+            },
+            "previousValue": null,
+            "newValue": {
+              "status": "new",
+              "assignedTo": "6ac8e0cd59fa4e91fe941ad4"
+            },
+            "description": "Lead created by Super Admin",
+            "createdAt": "2026-10-10T12:02:00.668Z",
+            "updatedAt": "2026-10-10T12:02:00.668Z",
+            "message": "Lead created by Super Admin"
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "limit": 20,
+          "total": 13,
+          "totalPages": 1
+        }
+      }
+order: 1000

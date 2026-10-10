@@ -1,0 +1,24 @@
+$kind: http-request
+description: 'Retrieves all deals associated with a specific customer by their ID.'
+url: '{{BASE_URL}}/api/customers/:id/deals'
+method: GET
+pathVariables:
+  - key: id
+    value: 6aca30bbbfde21de471440ac
+    description: ''
+auth:
+  type: bearer
+  credentials:
+    token: '{{token}}'
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const res = pm.response.json();
+      pm.test("Status code is 200", () => pm.response.to.have.status(200));
+      pm.test("Response time < 2000ms", () => pm.expect(pm.response.responseTime).to.be.below(2000));
+      pm.test("Response has success true", () => pm.expect(res.success).to.be.true);
+      pm.test("Data is an array", () => pm.expect(res.data).to.be.an("array"));
+      pm.test("Pagination is present", () => pm.expect(res.pagination).to.be.an("object"));
+examples: '.resources/Get deals by customer.resources/examples'
+order: 4000

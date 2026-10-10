@@ -1,0 +1,62 @@
+$kind: http-example
+request:
+  url: "{{BASE_URL}}/api/leads/:id/assign"
+  method: PATCH
+  pathVariables:
+    id: 6aca29385191814d42c2ebe0
+  body:
+    type: json
+    content: |-
+      {
+        "assignedTo": "6aca2c365191814d42c2ebe3",
+        "remark": "Reassigning to the enterprise sales executive."
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    x-powered-by: Express
+    vary: Origin
+    access-control-allow-credentials: "true"
+    content-type: application/json; charset=utf-8
+    content-length: "685"
+    etag: W/"2ad-T+xy/IoW+3gSYGUoMS7c7Avrf8M"
+    date: Sat, 10 Oct 2026 12:15:41 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: json
+    content: |-
+      {
+        "success": true,
+        "message": "Lead assigned successfully",
+        "data": {
+          "_id": "6aca29385191814d42c2ebe0",
+          "name": "Priya Verma",
+          "email": "priya.verma@acme.com",
+          "phone": "+919812345678",
+          "company": "Acme Technologies",
+          "source": "website",
+          "status": "qualified",
+          "priority": "high",
+          "assignedTo": {
+            "_id": "6aca2c365191814d42c2ebe3",
+            "name": "Bakul Sharma",
+            "email": "bakul@example.com",
+            "role": "executive"
+          },
+          "createdBy": {
+            "_id": "6ac8d83ff99ddbc0d0ca645c",
+            "name": "Super Admin",
+            "email": "admin@ivtex.com",
+            "role": "admin"
+          },
+          "customerId": null,
+          "dealId": null,
+          "convertedAt": null,
+          "description": "Interested in the enterprise plan, asked for a demo.",
+          "createdAt": "2026-10-10T12:02:00.602Z",
+          "updatedAt": "2026-10-10T12:15:41.512Z"
+        }
+      }
+order: 1000

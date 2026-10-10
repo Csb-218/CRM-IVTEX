@@ -1,0 +1,4 @@
+$kind: collection
+name: Dashboard
+description: 'Aggregated metrics and KPIs for the CRM dashboard — leads, deals, revenue, and activity stats.'
+order: 10000

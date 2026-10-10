@@ -1,0 +1,4 @@
+$kind: collection
+name: Auth
+description: 'Authentication endpoints for user login and registration. Login stores the accessToken in {{token}} automatically.'
+order: 2000

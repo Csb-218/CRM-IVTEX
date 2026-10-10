@@ -1,0 +1,4 @@
+$kind: collection
+name: Users
+description: 'User management endpoints. List all users, get user by ID, and retrieve assignable executives for lead/deal assignment.'
+order: 4000

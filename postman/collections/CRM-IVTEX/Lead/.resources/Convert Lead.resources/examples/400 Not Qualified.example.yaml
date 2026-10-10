@@ -1,0 +1,44 @@
+$kind: http-example
+request:
+  url: "{{BASE_URL}}/api/leads/:id/convert"
+  method: POST
+  pathVariables:
+    id: 6aca3176bfde21de471440b1
+  body:
+    type: json
+    content: |-
+      {
+        "dealName": "Sasken Corp Q4 Deal",
+        "dealValue": 50000,
+        "dealProbability": 40,
+        "dealExpectedCloseDate": "2026-12-31",
+        "customerAddress": {
+          "street": "123 Business Way",
+          "city": "Metropolis",
+          "state": "NY",
+          "country": "USA"
+        }
+      }
+response:
+  statusCode: 400
+  statusText: Bad Request
+  headers:
+    x-powered-by: Express
+    vary: Origin
+    access-control-allow-credentials: "true"
+    content-type: application/json; charset=utf-8
+    content-length: "495"
+    etag: W/"1ef-wXceJK1hyAeByMz30vlJKs5l5zQ"
+    date: Sat, 10 Oct 2026 12:39:13 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: json
+    content: |-
+      {
+        "success": false,
+        "status": "fail",
+        "message": "Only qualified leads can convert. Current lead status is 'new'",
+        "stack": "Error: Only qualified leads can convert. Current lead status is 'new'\n    at LeadService.convertLead (/Users/ritik/Web_Development/MERN_Projects/CRM-IVTEX/src/services/lead.service.ts:381:13)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async /Users/ritik/Web_Development/MERN_Projects/CRM-IVTEX/src/controllers/lead.controller.ts:91:20"
+      }
+order: 2000

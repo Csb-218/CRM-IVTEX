@@ -1,0 +1,4 @@
+$kind: collection
+name: Activity
+description: 'Endpoints for managing CRM activities — notes, calls, and tasks linked to leads and customers.'
+order: 8000

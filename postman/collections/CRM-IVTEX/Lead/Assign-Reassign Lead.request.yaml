@@ -1,0 +1,30 @@
+$kind: http-request
+name: 'Assign/Reassign Lead'
+description: 'Assigns or reassigns a lead to a sales executive. An optional remark can be provided to document the reason for reassignment.'
+url: '{{BASE_URL}}/api/leads/:id/assign'
+method: PATCH
+pathVariables:
+  - key: id
+    value: 6aca29385191814d42c2ebe0
+body:
+  type: json
+  content: |-
+    {
+      "assignedTo": "6aca2c365191814d42c2ebe3",
+      "remark": "Reassigning to the enterprise sales executive."
+    }
+auth:
+  type: bearer
+  credentials:
+    token: '{{token}}'
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const res = pm.response.json();
+      pm.test("Status code is 200", () => pm.response.to.have.status(200));
+      pm.test("Response time < 2000ms", () => pm.expect(pm.response.responseTime).to.be.below(2000));
+      pm.test("Response has success true", () => pm.expect(res.success).to.be.true);
+      pm.test("Updated data is returned", () => pm.expect(res.data).to.exist);
+examples: '.resources/Assign-Reassign Lead.resources/examples'
+order: 5000

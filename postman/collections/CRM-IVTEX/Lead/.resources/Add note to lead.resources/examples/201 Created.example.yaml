@@ -1,0 +1,50 @@
+$kind: http-example
+request:
+  url: "{{BASE_URL}}/api/leads/:id/notes"
+  method: POST
+  pathVariables:
+    id: 6aca3176bfde21de471440b1
+  body:
+    type: json
+    content: |
+      {
+        "title": "Discovery Call Notes",
+        "content": "Discussed Q4 expansion budget; decision maker requested proposal by Friday."
+      }
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    x-powered-by: Express
+    vary: Origin
+    access-control-allow-credentials: "true"
+    content-type: application/json; charset=utf-8
+    content-length: "472"
+    etag: W/"1d8-StlN8FzC8fq3GdHxsU9m9KEsxXM"
+    date: Sat, 10 Oct 2026 12:43:17 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: json
+    content: |-
+      {
+        "success": true,
+        "message": "Note added successfully",
+        "data": {
+          "_id": "6aca32e4bfde21de471440b4",
+          "entityType": "lead",
+          "entityId": "6aca3176bfde21de471440b1",
+          "type": "note",
+          "title": "Discovery Call Notes",
+          "content": "Discussed Q4 expansion budget; decision maker requested proposal by Friday.",
+          "createdBy": {
+            "_id": "6ac8d83ff99ddbc0d0ca645c",
+            "name": "Super Admin",
+            "email": "admin@ivtex.com",
+            "role": "admin"
+          },
+          "createdAt": "2026-10-10T12:43:16.882Z",
+          "updatedAt": "2026-10-10T12:43:16.882Z"
+        }
+      }
+order: 1000

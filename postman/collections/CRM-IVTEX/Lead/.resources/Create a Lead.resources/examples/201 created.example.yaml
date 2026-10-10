@@ -1,0 +1,66 @@
+$kind: http-example
+request:
+  url: "{{BASE_URL}}/api/leads"
+  method: POST
+  body:
+    type: json
+    content: |-
+      {
+        "name": "Priya Verma",
+        "email": "priya.verma@acme.com",
+        "phone": "+919812345678",
+        "company": "Acme Technologies",
+        "source": "website",
+        "priority": "high",
+        "assignedTo": "6ac8e0cd59fa4e91fe941ad4",
+        "description": "Interested in the enterprise plan, asked for a demo."
+      }
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    x-powered-by: Express
+    vary: Origin
+    access-control-allow-credentials: "true"
+    content-type: application/json; charset=utf-8
+    content-length: "678"
+    etag: W/"2a6-8/BPaxl8PJ4Fhmmc6Vys/abAuUM"
+    date: Sat, 10 Oct 2026 12:02:00 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: json
+    content: |-
+      {
+        "success": true,
+        "message": "Lead created successfully",
+        "data": {
+          "_id": "6aca29385191814d42c2ebe0",
+          "name": "Priya Verma",
+          "email": "priya.verma@acme.com",
+          "phone": "+919812345678",
+          "company": "Acme Technologies",
+          "source": "website",
+          "status": "new",
+          "priority": "high",
+          "assignedTo": {
+            "_id": "6ac8e0cd59fa4e91fe941ad4",
+            "name": "Rahul Sharma",
+            "email": "rahul@example.com",
+            "role": "executive"
+          },
+          "createdBy": {
+            "_id": "6ac8d83ff99ddbc0d0ca645c",
+            "name": "Super Admin",
+            "email": "admin@ivtex.com",
+            "role": "admin"
+          },
+          "customerId": null,
+          "dealId": null,
+          "convertedAt": null,
+          "description": "Interested in the enterprise plan, asked for a demo.",
+          "createdAt": "2026-10-10T12:02:00.602Z",
+          "updatedAt": "2026-10-10T12:02:00.602Z"
+        }
+      }
+order: 1000

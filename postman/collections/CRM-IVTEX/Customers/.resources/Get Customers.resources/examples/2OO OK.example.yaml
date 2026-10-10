@@ -1,0 +1,62 @@
+$kind: http-example
+request:
+  url: "{{BASE_URL}}/api/customers"
+  method: GET
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    x-powered-by: Express
+    vary: Origin
+    access-control-allow-credentials: "true"
+    content-type: application/json; charset=utf-8
+    content-length: "694"
+    etag: W/"2b6-mI5tbu7rCqRHIc7xMNXty5NbvI4"
+    date: Sat, 10 Oct 2026 12:48:05 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: json
+    content: |-
+      {
+        "success": true,
+        "message": "Customers retrieved successfully",
+        "data": [
+          {
+            "address": {
+              "street": "123 Business Way",
+              "city": "Metropolis",
+              "state": "NY",
+              "country": "USA",
+              "postalCode": ""
+            },
+            "_id": "6aca30bbbfde21de471440ac",
+            "name": "Priya Verma",
+            "email": "priya.verma@acme.com",
+            "phone": "+919812345678",
+            "company": "Acme Technologies",
+            "leadId": {
+              "_id": "6aca29385191814d42c2ebe0",
+              "name": "Priya Verma",
+              "source": "website",
+              "status": "converted"
+            },
+            "assignedTo": {
+              "_id": "6aca2c365191814d42c2ebe3",
+              "name": "Bakul Sharma",
+              "email": "bakul@example.com",
+              "role": "executive"
+            },
+            "status": "active",
+            "createdAt": "2026-10-10T12:34:03.764Z",
+            "updatedAt": "2026-10-10T12:34:03.764Z"
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "limit": 10,
+          "total": 1,
+          "totalPages": 1
+        }
+      }
+order: 1000

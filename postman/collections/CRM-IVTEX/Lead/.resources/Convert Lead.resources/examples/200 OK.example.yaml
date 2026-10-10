@@ -1,0 +1,108 @@
+$kind: http-example
+request:
+  url: "{{BASE_URL}}/api/leads/:id/convert"
+  method: POST
+  pathVariables:
+    id: 6aca29385191814d42c2ebe0
+  body:
+    type: json
+    content: |-
+      {
+        "dealName": "Acme Corp Q4 Deal",
+        "dealValue": 50000,
+        "dealProbability": 40,
+        "dealExpectedCloseDate": "2026-12-31",
+        "customerAddress": {
+          "street": "123 Business Way",
+          "city": "Metropolis",
+          "state": "NY",
+          "country": "USA"
+        }
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    x-powered-by: Express
+    vary: Origin
+    access-control-allow-credentials: "true"
+    content-type: application/json; charset=utf-8
+    content-length: "1688"
+    etag: W/"698-t2C2cBlfsJg/k2kdZX+z78PDpr8"
+    date: Sat, 10 Oct 2026 12:34:04 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: json
+    content: |-
+      {
+        "success": true,
+        "message": "Lead converted successfully",
+        "data": {
+          "lead": {
+            "_id": "6aca29385191814d42c2ebe0",
+            "name": "Priya Verma",
+            "email": "priya.verma@acme.com",
+            "phone": "+919812345678",
+            "company": "Acme Technologies",
+            "source": "website",
+            "status": "converted",
+            "priority": "high",
+            "assignedTo": "6aca2c365191814d42c2ebe3",
+            "createdBy": "6ac8d83ff99ddbc0d0ca645c",
+            "customerId": {
+              "_id": "6aca30bbbfde21de471440ac",
+              "name": "Priya Verma",
+              "email": "priya.verma@acme.com",
+              "company": "Acme Technologies"
+            },
+            "dealId": {
+              "_id": "6aca30bbbfde21de471440ad",
+              "name": "Acme Corp Q4 Deal",
+              "value": 50000,
+              "stage": "qualification"
+            },
+            "convertedAt": "2026-10-10T12:34:03.868Z",
+            "description": "Interested in the enterprise plan, asked for a demo.",
+            "createdAt": "2026-10-10T12:02:00.602Z",
+            "updatedAt": "2026-10-10T12:34:03.868Z"
+          },
+          "customer": {
+            "name": "Priya Verma",
+            "email": "priya.verma@acme.com",
+            "phone": "+919812345678",
+            "company": "Acme Technologies",
+            "address": {
+              "street": "123 Business Way",
+              "city": "Metropolis",
+              "state": "NY",
+              "country": "USA",
+              "postalCode": ""
+            },
+            "leadId": "6aca29385191814d42c2ebe0",
+            "assignedTo": "6aca2c365191814d42c2ebe3",
+            "status": "active",
+            "_id": "6aca30bbbfde21de471440ac",
+            "createdAt": "2026-10-10T12:34:03.764Z",
+            "updatedAt": "2026-10-10T12:34:03.764Z"
+          },
+          "deal": {
+            "name": "Acme Corp Q4 Deal",
+            "leadId": "6aca29385191814d42c2ebe0",
+            "customerId": "6aca30bbbfde21de471440ac",
+            "assignedTo": "6aca2c365191814d42c2ebe3",
+            "value": 50000,
+            "probability": 40,
+            "expectedRevenue": 20000,
+            "expectedCloseDate": "2026-12-31T00:00:00.000Z",
+            "stage": "qualification",
+            "lostReason": null,
+            "closedAt": null,
+            "description": "Generated from converted lead: Priya Verma",
+            "_id": "6aca30bbbfde21de471440ad",
+            "createdAt": "2026-10-10T12:34:03.817Z",
+            "updatedAt": "2026-10-10T12:34:03.817Z"
+          }
+        }
+      }
+order: 1000

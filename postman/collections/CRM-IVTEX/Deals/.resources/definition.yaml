@@ -1,0 +1,4 @@
+$kind: collection
+name: Deals
+description: 'Manage the sales pipeline. Create deals, update stages, reassign to executives, and track deal values and probabilities.'
+order: 7000

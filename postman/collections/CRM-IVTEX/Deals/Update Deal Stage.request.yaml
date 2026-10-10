@@ -1,0 +1,29 @@
+$kind: http-request
+description: 'Updates the pipeline stage of a deal (e.g., discovery → proposal → won/lost). Optionally updates the expectedCloseDate.'
+url: '{{BASE_URL}}/api/deals/:id/stage'
+method: PATCH
+pathVariables:
+  - key: id
+    value: 6aca3e9dbfde21de471440b9
+body:
+  type: json
+  content: |-
+    {
+      "stage": "won",
+      "expectedCloseDate": "2026-11-30T00:00:00.000Z"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: '{{token}}'
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const res = pm.response.json();
+      pm.test("Status code is 200", () => pm.response.to.have.status(200));
+      pm.test("Response time < 2000ms", () => pm.expect(pm.response.responseTime).to.be.below(2000));
+      pm.test("Response has success true", () => pm.expect(res.success).to.be.true);
+      pm.test("Updated data is returned", () => pm.expect(res.data).to.exist);
+examples: '.resources/Update Deal Stage.resources/examples'
+order: 3000

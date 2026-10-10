@@ -1,0 +1,79 @@
+$kind: http-example
+request:
+  url: "{{BASE_URL}}/api/dashboard/summary"
+  method: GET
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    x-powered-by: Express
+    vary: Origin
+    access-control-allow-credentials: "true"
+    content-type: application/json; charset=utf-8
+    content-length: "714"
+    etag: W/"2ca-yt/sJJydF/4sBMJBOnJKvrm9nF4"
+    date: Sat, 10 Oct 2026 17:17:35 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: json
+    content: |-
+      {
+        "success": true,
+        "message": "Dashboard summary metrics retrieved successfully",
+        "data": {
+          "timeframe": "all_time",
+          "leads": {
+            "total": 2,
+            "byStatus": {
+              "new": 0,
+              "contacted": 0,
+              "qualified": 1,
+              "unqualified": 0,
+              "converted": 1,
+              "lost": 0
+            },
+            "conversionRate": 50
+          },
+          "customers": {
+            "total": 1,
+            "active": 1,
+            "inactive": 0
+          },
+          "deals": {
+            "total": 2,
+            "open": 1,
+            "won": 1,
+            "lost": 0,
+            "winRate": 100,
+            "byStage": {
+              "qualification": {
+                "count": 1,
+                "totalValue": 50000,
+                "expectedRevenue": 20000
+              },
+              "won": {
+                "count": 1,
+                "totalValue": 75000,
+                "expectedRevenue": 75000
+              }
+            }
+          },
+          "revenue": {
+            "wonRevenue": 75000,
+            "pipelineValue": 50000,
+            "expectedRevenue": 20000,
+            "totalDealValue": 125000,
+            "lostValue": 0,
+            "averageWonDealValue": 75000
+          },
+          "activities": {
+            "total": 0,
+            "completed": 0,
+            "pending": 0,
+            "overdue": 0,
+            "completionRate": 0
+          }
+        }
+      }
+order: 1000

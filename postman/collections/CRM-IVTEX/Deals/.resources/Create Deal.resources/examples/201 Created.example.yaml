@@ -1,0 +1,66 @@
+$kind: http-example
+request:
+  url: "{{BASE_URL}}/deals"
+  method: POST
+  body:
+    type: json
+    content: |
+      {
+        "name": "Enterprise ERP Migration",
+        "customerId": "6aca30bbbfde21de471440ac",
+        "leadId": "6aca29385191814d42c2ebe0",
+        "assignedTo": "6aca2c365191814d42c2ebe3",
+        "value": 75000,
+        "probability": 40,
+        "expectedCloseDate": "2026-12-15T00:00:00.000Z",
+        "stage": "discovery",
+        "description": "Initial scope discovery completed; awaiting technical review."
+      }
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    x-powered-by: Express
+    vary: Origin
+    access-control-allow-credentials: "true"
+    content-type: application/json; charset=utf-8
+    content-length: "725"
+    etag: W/"2d5-A6rmRUw1gdIZkne43ADc/RYsJMA"
+    date: Sat, 10 Oct 2026 13:33:17 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: json
+    content: |-
+      {
+        "success": true,
+        "message": "Deal created successfully",
+        "data": {
+          "_id": "6aca3e9dbfde21de471440b9",
+          "name": "Enterprise ERP Migration",
+          "leadId": "6aca29385191814d42c2ebe0",
+          "customerId": {
+            "_id": "6aca30bbbfde21de471440ac",
+            "name": "Priya Verma",
+            "email": "priya.verma@acme.com",
+            "company": "Acme Technologies"
+          },
+          "assignedTo": {
+            "_id": "6aca2c365191814d42c2ebe3",
+            "name": "Bakul Sharma",
+            "email": "bakul@example.com",
+            "role": "executive"
+          },
+          "value": 75000,
+          "probability": 40,
+          "expectedRevenue": 30000,
+          "expectedCloseDate": "2026-12-15T00:00:00.000Z",
+          "stage": "discovery",
+          "lostReason": null,
+          "closedAt": null,
+          "description": "Initial scope discovery completed; awaiting technical review.",
+          "createdAt": "2026-10-10T13:33:17.582Z",
+          "updatedAt": "2026-10-10T13:33:17.582Z"
+        }
+      }
+order: 1000

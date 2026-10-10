@@ -1,0 +1,19 @@
+$kind: http-request
+description: 'Returns aggregated CRM metrics including lead conversion rates, customer counts, deal pipeline values, win rates, and activity completion stats.'
+url: '{{BASE_URL}}/api/dashboard/summary'
+method: GET
+auth:
+  type: bearer
+  credentials:
+    token: '{{token}}'
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const res = pm.response.json();
+      pm.test("Status code is 200", () => pm.response.to.have.status(200));
+      pm.test("Response time < 2000ms", () => pm.expect(pm.response.responseTime).to.be.below(2000));
+      pm.test("Response has success true", () => pm.expect(res.success).to.be.true);
+      pm.test("Data is present", () => pm.expect(res.data).to.exist);
+examples: '.resources/Get Dashboard Summary.resources/examples'
+order: 1000

@@ -9,7 +9,8 @@
     "docker:build": "docker build -t crm-ivtex-app .",
     "docker:run": "docker run -p 8000:8000 --env-file .env crm-ivtex-app",
     "docker:compose": "docker compose up --build",
-    "seed": "ts-node src/utils/seedAdmin.ts"
+    "seed": "ts-node src/utils/seedAdmin.ts",
+    "seed:prod": "node dist/utils/seedAdmin.js"
   },
   "keywords": [],
   "author": "",

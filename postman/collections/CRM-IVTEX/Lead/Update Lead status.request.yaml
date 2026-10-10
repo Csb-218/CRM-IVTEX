@@ -1,0 +1,29 @@
+$kind: http-request
+description: 'Updates the status of a lead (new → contacted → qualified → unqualified → converted/lost). An optional remark documents the reason.'
+url: '{{BASE_URL}}/api/leads/:id/status'
+method: PATCH
+pathVariables:
+  - key: id
+    value: 6aca29385191814d42c2ebe0
+body:
+  type: json
+  content: |-
+    {
+      "status": "qualified",
+      "remark": "Budget and timeline confirmed on call."
+    }
+auth:
+  type: bearer
+  credentials:
+    token: '{{token}}'
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const res = pm.response.json();
+      pm.test("Status code is 200", () => pm.response.to.have.status(200));
+      pm.test("Response time < 2000ms", () => pm.expect(pm.response.responseTime).to.be.below(2000));
+      pm.test("Response has success true", () => pm.expect(res.success).to.be.true);
+      pm.test("Updated data is returned", () => pm.expect(res.data).to.exist);
+examples: '.resources/Update Lead status.resources/examples'
+order: 4000

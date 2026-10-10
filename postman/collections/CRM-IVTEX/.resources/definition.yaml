@@ -1,0 +1,44 @@
+$kind: collection
+name: CRM-IVTEX
+description: |-
+  # CRM-IVTEX API Collection
+
+  A complete CRM (Customer Relationship Management) REST API for managing the full sales lifecycle — from lead capture to deal closure.
+
+  ## Authentication
+  All endpoints (except Login and Register) require a Bearer token. Run the **Login** request first — it automatically stores the `accessToken` in the `{{token}}` environment variable.
+
+  ## Workflow
+  1. **Auth** → Login to get your token
+  2. **Users** → List users and find assignable executives
+  3. **Lead** → Create and manage leads through the pipeline
+  4. **Customers** → Manage converted customers
+  5. **Deals** → Track and update the sales pipeline
+  6. **Activity** → Log notes and tasks against leads/customers
+  7. **Timeline** → Audit all CRM actions
+  8. **Dashboard** → View aggregated KPIs and metrics
+
+  ## Environment Variables
+  | Variable | Description |
+  |----------|-------------|
+  | `BASE_URL` | Base URL of the API (e.g. `http://localhost:5000`) |
+  | `token` | JWT access token — auto-set by the Login request |
+scripts:
+  - type: beforeRequest
+    language: text/javascript
+    code: |-
+      // Warn if BASE_URL is not set
+      const baseUrl = pm.environment.get("BASE_URL");
+      if (!baseUrl) {
+        console.warn("⚠️  BASE_URL environment variable is not set. Please configure your environment.");
+      }
+
+      // Warn if token is missing for non-auth requests
+      const url = pm.request.url.toString();
+      const isAuthRequest = url.includes("/auth/login") || url.includes("/auth/register");
+      if (!isAuthRequest) {
+        const token = pm.environment.get("token");
+        if (!token) {
+          console.warn("⚠️  token is not set. Run the Login request first to authenticate.");
+        }
+      }

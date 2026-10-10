@@ -1,0 +1,4 @@
+$kind: collection
+name: Timeline
+description: 'Audit trail of all CRM actions. Tracks every status change, assignment, conversion, and creation event across leads, customers, and deals.'
+order: 9000

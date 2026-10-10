@@ -1,0 +1,27 @@
+$kind: http-request
+description: 'Authenticates a user with email and password. On success, stores the accessToken in the {{token}} environment variable for use in subsequent requests.'
+url: '{{BASE_URL}}/api/auth/login'
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "email": "Sameer@example.com",
+      "password": "Str0ng@Pass123"
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const res = pm.response.json();
+      const accessToken = res?.data?.accessToken;
+      if (accessToken) {
+        pm.environment.set("token", accessToken);
+      }
+
+      pm.test("Status code is 200", () => pm.response.to.have.status(200));
+      pm.test("Response time < 2000ms", () => pm.expect(pm.response.responseTime).to.be.below(2000));
+      pm.test("Response has success true", () => pm.expect(res.success).to.be.true);
+      pm.test("Access token is present", () => pm.expect(res.data.accessToken).to.be.a("string").and.not.empty);
+examples: .resources/Login.resources/examples
+order: 2000

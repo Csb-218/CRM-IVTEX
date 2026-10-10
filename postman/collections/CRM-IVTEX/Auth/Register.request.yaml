@@ -1,0 +1,30 @@
+$kind: http-request
+description: 'Registers a new user (executive or manager). Requires admin/manager Bearer token. Returns accessToken and refreshToken on success.'
+url: '{{BASE_URL}}/api/auth/register'
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "name": "Rahul Sharma",
+      "email": "rahul@example.com",
+      "phone": "+919876543210",
+      "password": "Str0ng@Pass123",
+      "role": "executive",
+      "managerId": "6ac8e03159fa4e91fe941ad3"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: '{{token}}'
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const res = pm.response.json();
+      pm.test("Status code is 200 or 201", () => pm.expect(pm.response.code).to.be.oneOf([200, 201]));
+      pm.test("Response time < 2000ms", () => pm.expect(pm.response.responseTime).to.be.below(2000));
+      pm.test("Response has success true", () => pm.expect(res.success).to.be.true);
+      pm.test("Access token is present", () => pm.expect(res.data.accessToken).to.be.a("string").and.not.empty);
+examples: .resources/Register.resources/examples
+order: 1000

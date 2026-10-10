@@ -1,0 +1,33 @@
+$kind: http-request
+description: 'Creates a new deal linked to a customer and optionally a lead. Requires name, customerId, value, probability, expectedCloseDate, and stage.'
+url: '{{BASE_URL}}/api/deals'
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "name": "Enterprise ERP Migration",
+      "customerId": "6aca30bbbfde21de471440ac",
+      "leadId": "6aca29385191814d42c2ebe0",
+      "assignedTo": "6aca2c365191814d42c2ebe3",
+      "value": 75000,
+      "probability": 40,
+      "expectedCloseDate": "2026-12-15T00:00:00.000Z",
+      "stage": "discovery",
+      "description": "Initial scope discovery completed; awaiting technical review."
+    }
+auth:
+  type: bearer
+  credentials:
+    token: '{{token}}'
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const res = pm.response.json();
+      pm.test("Status code is 200 or 201", () => pm.expect(pm.response.code).to.be.oneOf([200, 201]));
+      pm.test("Response time < 2000ms", () => pm.expect(pm.response.responseTime).to.be.below(2000));
+      pm.test("Response has success true", () => pm.expect(res.success).to.be.true);
+      pm.test("Created data is returned", () => pm.expect(res.data).to.exist);
+examples: '.resources/Create Deal.resources/examples'
+order: 2000

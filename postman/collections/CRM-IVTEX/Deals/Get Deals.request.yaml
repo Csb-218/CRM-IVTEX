@@ -1,0 +1,65 @@
+$kind: http-request
+description: 'Retrieves a paginated list of deals. Supports filtering by stage, assignedTo, customerId, value range, and date range.'
+url: '{{BASE_URL}}/api/deals?page=1&limit=10&sortBy=value&sortOrder=desc'
+method: GET
+queryParams:
+  - key: stage
+    value: proposal
+    disabled: true
+    description: ''
+  - key: assignedTo
+    value: <ID>
+    disabled: true
+    description: ''
+  - key: customerId
+    value: <ID>
+    disabled: true
+    description: ''
+  - key: minValue
+    value: '10000'
+    disabled: true
+    description: ''
+  - key: maxValue
+    value: '100000'
+    disabled: true
+    description: ''
+  - key: startDate
+    value: 2026-01-01
+    disabled: true
+    description: ''
+  - key: endDate
+    value: 2026-12-31
+    disabled: true
+    description: ''
+  - key: page
+    value: '1'
+    disabled: false
+    description: ''
+  - key: limit
+    value: '10'
+    disabled: false
+    description: ''
+  - key: sortBy
+    value: value
+    disabled: false
+    description: ''
+  - key: sortOrder
+    value: desc
+    disabled: false
+    description: ''
+auth:
+  type: bearer
+  credentials:
+    token: '{{token}}'
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const res = pm.response.json();
+      pm.test("Status code is 200", () => pm.response.to.have.status(200));
+      pm.test("Response time < 2000ms", () => pm.expect(pm.response.responseTime).to.be.below(2000));
+      pm.test("Response has success true", () => pm.expect(res.success).to.be.true);
+      pm.test("Data is an array", () => pm.expect(res.data).to.be.an("array"));
+      pm.test("Pagination is present", () => pm.expect(res.pagination).to.be.an("object"));
+examples: '.resources/Get Deals.resources/examples'
+order: 1000

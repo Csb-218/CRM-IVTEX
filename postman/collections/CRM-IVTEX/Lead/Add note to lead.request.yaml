@@ -1,0 +1,29 @@
+$kind: http-request
+description: 'Adds a note activity to a specific lead. Notes are stored as activity records linked to the lead entity.'
+url: '{{BASE_URL}}/api/leads/:id/notes'
+method: POST
+pathVariables:
+  - key: id
+    value: 6aca3176bfde21de471440b1
+body:
+  type: json
+  content: |-
+    {
+      "title": "Discovery Call Notes",
+      "content": "Discussed Q4 expansion budget; decision maker requested proposal by Friday."
+    }
+auth:
+  type: bearer
+  credentials:
+    token: '{{token}}'
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const res = pm.response.json();
+      pm.test("Status code is 200 or 201", () => pm.expect(pm.response.code).to.be.oneOf([200, 201]));
+      pm.test("Response time < 2000ms", () => pm.expect(pm.response.responseTime).to.be.below(2000));
+      pm.test("Response has success true", () => pm.expect(res.success).to.be.true);
+      pm.test("Created data is returned", () => pm.expect(res.data).to.exist);
+examples: '.resources/Add note to lead.resources/examples'
+order: 7000

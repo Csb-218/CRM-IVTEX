@@ -1,0 +1,37 @@
+$kind: http-request
+description: 'Creates a new customer record. Requires name, email, phone, company, and optional address and assignedTo fields.'
+url: '{{BASE_URL}}/api/customers'
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "name": "Murati",
+      "email": "contact@acmeinnovations.com",
+      "phone": "+1-555-0199",
+      "company": "Acme Innovations",
+      "address": {
+        "street": "123 Technology Park",
+        "city": "Austin",
+        "state": "TX",
+        "postalCode": "78701",
+        "country": "USA"
+      },
+      "assignedTo": "6ac8e03159fa4e91fe941ad3",
+      "status": "active"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: '{{token}}'
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const res = pm.response.json();
+      pm.test("Status code is 200 or 201", () => pm.expect(pm.response.code).to.be.oneOf([200, 201]));
+      pm.test("Response time < 2000ms", () => pm.expect(pm.response.responseTime).to.be.below(2000));
+      pm.test("Response has success true", () => pm.expect(res.success).to.be.true);
+      pm.test("Created data is returned", () => pm.expect(res.data).to.exist);
+examples: '.resources/Create Custommer.resources/examples'
+order: 2000

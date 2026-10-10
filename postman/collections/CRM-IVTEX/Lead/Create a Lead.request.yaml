@@ -1,0 +1,32 @@
+$kind: http-request
+description: 'Creates a new lead in the CRM. Requires name, email, phone, company, source, and priority. Optionally assigns to an executive.'
+url: '{{BASE_URL}}/api/leads'
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "name": "Priya Verma",
+      "email": "priya.verma@acme.com",
+      "phone": "+919812345678",
+      "company": "Acme Technologies",
+      "source": "website",
+      "priority": "high",
+      "assignedTo": "6ac8e0cd59fa4e91fe941ad4",
+      "description": "Interested in the enterprise plan, asked for a demo."
+    }
+auth:
+  type: bearer
+  credentials:
+    token: '{{token}}'
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const res = pm.response.json();
+      pm.test("Status code is 200 or 201", () => pm.expect(pm.response.code).to.be.oneOf([200, 201]));
+      pm.test("Response time < 2000ms", () => pm.expect(pm.response.responseTime).to.be.below(2000));
+      pm.test("Response has success true", () => pm.expect(res.success).to.be.true);
+      pm.test("Created data is returned", () => pm.expect(res.data).to.exist);
+examples: '.resources/Create a Lead.resources/examples'
+order: 2000

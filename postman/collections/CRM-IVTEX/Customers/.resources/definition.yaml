@@ -1,0 +1,4 @@
+$kind: collection
+name: Customers
+description: 'Full CRUD operations for customer management. Customers are created from converted leads or directly. Supports deal lookup by customer.'
+order: 6000
