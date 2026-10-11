@@ -1,0 +1,109 @@
+
+erDiagram
+  USERS ||--o{ USERS : "manages"
+  USERS ||--o{ LEADS : "assigned"
+  USERS ||--o{ CUSTOMERS : "owns"
+  USERS ||--o{ DEALS : "owns"
+  USERS ||--o{ ACTIVITIES : "assigned"
+  USERS ||--o{ TIMELINE_LOGS : "performs"
+  LEADS |o--o| CUSTOMERS : "converts to"
+  LEADS |o--o| DEALS : "originates"
+  CUSTOMERS ||--o{ DEALS : "has"
+  LEADS |o..o{ ACTIVITIES : "related to"
+  CUSTOMERS |o..o{ ACTIVITIES : "related to"
+  DEALS |o..o{ ACTIVITIES : "related to"
+  LEADS |o..o{ TIMELINE_LOGS : "logged in"
+  CUSTOMERS |o..o{ TIMELINE_LOGS : "logged in"
+  DEALS |o..o{ TIMELINE_LOGS : "logged in"
+
+  USERS {
+    ObjectId _id PK
+    string name
+    string email UK
+    string phone
+    string password "hashed, select false"
+    string role "admin, manager, executive"
+    ObjectId managerId FK "for executives"
+    boolean isActive
+    date createdAt
+    date updatedAt
+  }
+
+  LEADS {
+    ObjectId _id PK
+    string name
+    string email
+    string phone
+    string company
+    string source "website, referral, social, email, phone, other"
+    string status "new, contacted, qualified, unqualified, converted, lost"
+    string priority "low, medium, high"
+    ObjectId assignedTo FK
+    ObjectId createdBy FK
+    ObjectId customerId FK "set on convert"
+    ObjectId dealId FK "set on convert"
+    date convertedAt
+    string description
+    date createdAt
+    date updatedAt
+  }
+
+  CUSTOMERS {
+    ObjectId _id PK
+    string name
+    string email UK
+    string phone
+    string company
+    object address
+    ObjectId leadId FK
+    ObjectId assignedTo FK
+    string status "active, inactive"
+    date createdAt
+    date updatedAt
+  }
+
+  DEALS {
+    ObjectId _id PK
+    string name
+    ObjectId leadId FK
+    ObjectId customerId FK
+    ObjectId assignedTo FK
+    number value "greater than 0"
+    number probability "0 to 100"
+    number expectedRevenue "value x probability"
+    date expectedCloseDate
+    string stage "qualification, discovery, proposal, negotiation, won, lost"
+    string lostReason "required when lost"
+    date closedAt
+    string description
+    date createdAt
+    date updatedAt
+  }
+
+  ACTIVITIES {
+    ObjectId _id PK
+    string type "call, email, meeting, demo, follow_up, reminder, note"
+    string title
+    string description
+    ObjectId assignedTo FK
+    ObjectId createdBy FK
+    date dueDate
+    string status "pending, completed"
+    date completedAt
+    string entityType "lead, customer, deal, user"
+    ObjectId entityId "polymorphic ref"
+    date createdAt
+    date updatedAt
+  }
+
+  TIMELINE_LOGS {
+    ObjectId _id PK
+    string action "lead_created, lead_assigned, deal_won, etc"
+    string entityType "lead, customer, deal"
+    ObjectId entityId "polymorphic ref"
+    ObjectId performedBy FK
+    mixed previousValue
+    mixed newValue
+    string message
+    date createdAt
+  }
